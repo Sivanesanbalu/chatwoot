@@ -16,12 +16,16 @@ export async function POST(req: Request) {
       customerName: body.customerName || 'Anonymous Visitor',
       customerEmail: body.customerEmail || 'visitor@guest.com',
       status: 'open',
+      channel: body.channel || 'website',
+      subject: body.subject || 'Live Chat Inquiry',
       lastMessage: body.initialMessage || 'Started conversation',
       lastMessageAt: 'Just now',
       unreadCount: 1,
-      channel: 'website',
-      location: body.location || 'Unknown Location',
-      device: body.device || 'Desktop Browser',
+      location: body.location || 'Online Client',
+      device: body.device || 'Mobile & Desktop Client',
+      deviceType: body.deviceType || 'mobile',
+      browser: body.browser || 'Safari / Chrome Mobile',
+      os: body.os || 'iOS / Android',
     }
     conversations.unshift(newConv)
     return NextResponse.json({ conversation: newConv })
